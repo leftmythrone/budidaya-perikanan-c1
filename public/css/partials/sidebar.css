@@ -1,0 +1,50 @@
+.sidebar {
+    width: 360px;
+    background-color: #05050D;
+    height: 100%;
+    position: fixed;
+    box-sizing: border-box;
+    padding: 20px;
+    border-right: 1px solid #C4C4C4;
+    opacity: 9  0%;
+}
+
+.sidebar ul li {
+    list-style: none;;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+}
+
+.logo img {
+    margin: 0px;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    padding: -10px;
+    border-radius: 100px;
+}
+
+.sideheading h1 {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.sideheading h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    opacity: 60%;
+
+}
+
+.sideicon img {
+    width: 200px;
+    height: 70px;
+    opacity: 70%;
+    position: relative;
+    right: 30px;
+    margin-left: 2px;
+}
