@@ -7,7 +7,13 @@ use App\Http\Controllers\FishController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StockController;
-use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\SettingController;
+
+
+
 
 
 /*
@@ -50,11 +56,13 @@ Route::post('/perikanan/create', [FishController::class, 'create']);
 
 Route::get('/perikanan/store', [FishController::class, 'store']);
 
-Route::get('/perikanan/edit', [FishController::class, 'show']);
+Route::get('/perikanan/show/', [FishController::class, 'show']);
 
-Route::get('/perikanan/update', [FishController::class, 'edit']);
+Route::get('/perikanan/edit/{slug_ikan}', [FishController::class, 'edit']);
 
-Route::get('/perikanan/destroy', [FishController::class, 'destroy']);
+Route::get('/perikanan/update/{slug_ikan}', [FishController::class, 'update']);
+
+Route::get('/perikanan/destroy/{slug_ikan}', [FishController::class, 'destroy']);
 
 /*
 |--------------------------------------------------------------------------
@@ -90,17 +98,17 @@ Route::get('/penjadwalan/destroy', [ScheduleController::class, 'destroy']);
 |
 */
 
-Route::get('/penjualan', [TransactionController::class, 'index']);
+Route::get('/penjualan', [SalesController::class, 'index']);
 
-Route::post('/penjualan/create', [TransactionController::class, 'create']);
+Route::post('/penjualan/create', [SalesController::class, 'create']);
 
-Route::get('/penjualan/store', [TransactionController::class, 'store']);
+Route::get('/penjualan/store', [SalesController::class, 'store']);
 
-Route::get('/penjualan/edit', [TransactionController::class, 'show']);
+Route::get('/penjualan/edit', [SalesController::class, 'show']);
 
-Route::get('/penjualan/update', [TransactionController::class, 'edit']);
+Route::get('/penjualan/update', [SalesController::class, 'edit']);
 
-Route::get('/penjualan/destroy', [TransactionController::class, 'destroy']);
+Route::get('/penjualan/destroy', [SalesController::class, 'destroy']);
 
 /*
 |--------------------------------------------------------------------------
@@ -147,3 +155,49 @@ Route::get('/pengaturan/edit', [SettingController::class, 'show']);
 Route::get('/pengaturan/update', [SettingController::class, 'edit']);
 
 Route::get('/pengaturan/destroy', [SettingController::class, 'destroy']);
+
+/*
+|--------------------------------------------------------------------------
+| Source Pengguna Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/pengguna', [UserController::class, 'index']);
+
+Route::post('/pengguna/create', [UserController::class, 'create']);
+
+Route::get('/pengguna/store', [UserController::class, 'store']);
+
+Route::get('/pengguna/edit', [UserController::class, 'show']);
+
+Route::get('/pengguna/update', [UserController::class, 'edit']);
+
+Route::get('/pengguna/destroy', [UserController::class, 'destroy']);
+
+/*
+|--------------------------------------------------------------------------
+| Source Riwayat Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/riwayat', [HistoryController::class, 'index']);
+
+Route::post('/riwayat/create', [HistoryController::class, 'create']);
+
+Route::get('/riwayat/store', [HistoryController::class, 'store']);
+
+Route::get('/riwayat/edit', [HistoryController::class, 'show']);
+
+Route::get('/riwayat/update', [HistoryController::class, 'edit']);
+
+Route::get('/riwayat/destroy', [HistoryController::class, 'destroy']);

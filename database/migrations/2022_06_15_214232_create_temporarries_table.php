@@ -13,16 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fish', function (Blueprint $table) {
+        Schema::create('temporarries', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_ikan');
-            $table->string('foto_ikan')->nullable();
-            $table->integer('bobot_ikan');
-            $table->integer('panjang_ikan');
-            $table->string('keterangan_ikan');
-            $table->integer('harga_ikan');
-            $table->date('tanggal_ikan')->nullable();
-            $table->string('slug_ikan');
+            $table->string('404');
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fish');
+        Schema::dropIfExists('temporarries');
     }
 };

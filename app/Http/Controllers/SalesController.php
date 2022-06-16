@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Models\Income;
-use \App\Models\Expense;
 
-class TransactionController extends Controller
+class SalesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        return view('/pages/company/jadwal/jadwal', [
+            // Judul Page
+            "title" => "Laporan",
+        ]);
     }
 
     /**

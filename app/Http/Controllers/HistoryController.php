@@ -3,17 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-use \App\Models\Fish;
-use \App\Models\Schedule;
-use \App\Models\Transaction;
-use \App\Models\Report;
-use \App\Models\History;
-use \App\Models\Stock;
-
-
-class UtilitiesController extends Controller
+class HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,14 +13,9 @@ class UtilitiesController extends Controller
      */
     public function index()
     {
-        return view('/pages/company/dashboard/dashboard', [
+        return view('/pages/company/riwayat/riwayat', [
             // Judul Page
-            "title" => "Dashboard",
-
-            // Pemanggil
-            "fish" => Fish::latest('id')->get(), 
-            "number" => 1,
-            
+            "title" => "Laporan",
         ]);
     }
 

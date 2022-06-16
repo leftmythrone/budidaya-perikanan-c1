@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use \App\Models\Fish;
+use \App\Models\Temporarry;
+
 
 class FishController extends Controller
 {
@@ -15,13 +17,14 @@ class FishController extends Controller
      */
     public function index()
     {
-        return view('/pages/perikanan/perikanan', [
+        return view('/pages/company/perikanan/perikanan1', [
             // Judul Page
-            "title" => "Nishikigoi",
+            "title" => "Data Ikan",
 
             // Pemanggil
             "fish" => Fish::latest('id')->get(), 
             "number" => 1,
+            "edits" => Temporarry::first()->get(), 
 
             // Looping variable
             "start" => 0,
@@ -59,14 +62,15 @@ class FishController extends Controller
             'slug_ikan' => $request->slug    
         ]);
 
-        return view('/pages/perikanan/perikanan', [
+        return view('/pages/company/perikanan/perikanan1', [
             
             // Judul Page
-            "title" => "Nishikigoi",
+            "title" => "Data Ikan",
 
             // Pemanggil
             "fish" => Fish::latest('id')->get(), 
             "number" => 1,
+            "edits" => Temporarry::first()->get(), 
 
             // Looping variable
             "start" => 0,
@@ -91,6 +95,8 @@ class FishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //  Untuk Melihat Data
     public function show($id)
     {
         //
@@ -102,9 +108,28 @@ class FishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+
+    //  UNTUK MENCARI DATA AGAR UNTUK EDIT
+    public function edit($slug_ikan)
     {
-        //
+        $fish = DB::table('fish')->where('slug_ikan',$slug_ikan)->get();
+
+        return view('/pages/company/perikanan/perikanan1', [
+            
+            // Judul Page
+            "title" => "Data Ikan",
+
+            // Pemanggil
+            "fish" => Fish::latest('id')->get(),
+            
+            "edits" => $fish, 
+            
+            "number" => 1,
+
+            // Looping variable
+            "start" => 0,
+            "end" => 10
+        ]);
     }
 
     /**
@@ -114,9 +139,35 @@ class FishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug_ikan)
     {
-        //
+        DB::table('fish')->where('slug_ikan', $slug_ikan)->update([
+            'nama_ikan'=>$request->name,
+            'foto_ikan'=>$request->image,
+            'bobot_ikan'=>$request->weight,
+            'panjang_ikan'=>$request->length,
+            'keterangan_ikan'=>$request->description,
+            'harga_ikan'=>$request->price,
+            'slug_ikan'=>$request->slug,
+		]);
+
+
+        return view('/pages/company/perikanan/perikanan1', [
+            
+            // Judul Page
+            "title" => "Data Ikan",
+
+            // Pemanggil
+            "fish" => Fish::latest('id')->get(),
+            
+            "edits" => Fish::latest('created_at')->get(),  
+            
+            "number" => 1,
+
+            // Looping variable
+            "start" => 0,
+            "end" => 10
+        ]);
     }
 
     /**
@@ -125,8 +176,22 @@ class FishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug_ikan)
     {
-        //
+        
+        DB::table('fish')->where('slug_ikan',$slug_ikan)->delete();
+    
+        return view('/pages/company/perikanan/perikanan1', [
+            // Judul Page
+            "title" => "Data Ikan",
+
+            // Pemanggil
+            "fish" => Fish::latest('created_at')->get(), 
+            "number" => 1,
+
+            // Looping variable
+            "start" => 0,
+            "end" => 10
+        ]);
     }
 }

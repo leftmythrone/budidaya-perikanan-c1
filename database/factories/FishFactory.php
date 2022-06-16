@@ -22,8 +22,9 @@ class FishFactory extends Factory
             'foto_ikan' => $this->faker->sentence(mt_rand(1,2)),
             'bobot_ikan' => $this->faker->numberBetween($min = 1, $max = 2),
             'panjang_ikan' => $this->faker->numberBetween($min = 1, $max = 15),
-            'keterangan_ikan' => $this->faker->sentence(mt_rand(5,10)),
+            'keterangan_ikan' => $this->faker->sentence(mt_rand(2,3)),
             'harga_ikan' => $this->faker->numberBetween($min = 1, $max = 15),
+            'tanggal_ikan' => $this->faker->dateTimeThisMonth(),   
             'slug_ikan' => $this->faker->numberBetween($min = 999, $max = 99999),
         ];
     }

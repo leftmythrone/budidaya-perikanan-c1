@@ -1,0 +1,46 @@
+.line {
+    margin: 10px 0px 10px 0px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    opacity: 80%;
+}
+
+.clear {
+    clear: both;
+}
+
+.headsection input {
+    float: right;
+    margin-right: 20px;
+    background-color: #05050D;
+    border-radius: 5px;
+    border: 2px solid white;
+    text-align: center;
+    color: white;
+    width: 400px;
+    height: 40px;
+}
+
+.headsection button {
+    float: right;
+    margin-right: 20px;
+    background-color: #15213C;
+    background: linear-gradient(120deg,#15213C, #216B98);
+    border-radius: 5px;
+    border: 0px solid white;
+    text-align: center;
+    color: white;
+    width: 400px;
+    height: 40px;
+    font-weight: bold;
+}
+
+.headsection h1 {
+ font-weight: 500;
+ font-size: 40px;   
+}
+
+.headsection h2 {
+    font-size: 20px;
+    opacity: 60%;
+}

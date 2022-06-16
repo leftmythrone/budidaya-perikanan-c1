@@ -18,7 +18,9 @@
 
     {{-- Partials --}}
     <link rel="stylesheet" href="/css/partials/sidebar.css">
-    <link rel="stylesheet" href="/css/partials/tables.css">
+
+    {{-- CSS Company --}}
+    <link rel="stylesheet" href="/css/pages/company/headsection.css">
 
     <title>Sukaiwaks | {{ $title }}</title>
 
