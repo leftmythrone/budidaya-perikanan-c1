@@ -18,7 +18,7 @@
     {{-- CSS --}}
     <link rel="stylesheet" href="/css/pages/utilities/login.css">
 
-    <title>Tolichris | {{ $title }}</title>
+    <title>Sukaiwaks | {{ $title }}</title>
   </head>
   <body>
 

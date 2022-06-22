@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,7 +14,16 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //
+        return view('/pages/company/dashboard/dashboard', [
+            // Judul Page
+            "title" => "Data Ikan",
+
+            // Pemanggil 
+
+            // Looping variable
+            "start" => 0,
+            "end" => 10
+        ]);
     }
 
     /**

@@ -6,6 +6,8 @@ use App\Http\Controllers\UtilitiesController;
 use App\Http\Controllers\FishController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\DashboardController;
+
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\UserController;
@@ -53,17 +55,17 @@ Route::get('/mychart/print', [UtilitiesController::class, 'printstore'])->middle
 |
 */
 
-Route::get('/dashboard', [UtilitiesController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::post('/dashboard/create', [UtilitiesController::class, 'create']);
+Route::post('/dashboard/create', [DashboardController::class, 'create']);
 
-Route::get('/dashboard/store', [UtilitiesController::class, 'store']);
+Route::post('/dashboard/store', [DashboardController::class, 'store']);
 
-Route::get('/dashboard/edit', [UtilitiesController::class, 'show']);
+Route::get('/dashboard/edit', [DashboardController::class, 'show']);
 
-Route::get('/dashboard/update', [UtilitiesController::class, 'edit']);
+Route::get('/dashboard/update', [DashboardController::class, 'edit']);
 
-Route::get('/dashboard/destroy', [UtilitiesController::class, 'destroy']);
+Route::get('/dashboard/destroy', [DashboardController::class, 'destroy']);
 
 /*
 |--------------------------------------------------------------------------

@@ -17,6 +17,7 @@ class SalesController extends Controller
      */
     public function index()
     {
+
         return view('/pages/company/penjualan/penjualan', [
             // Judul Page
             "title" => "Data Ikan",

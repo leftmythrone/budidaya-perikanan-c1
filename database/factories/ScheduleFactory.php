@@ -20,7 +20,7 @@ class ScheduleFactory extends Factory
             'absen_jadwal' => $this->faker->boolean,
             'keterangan_jadwal' => $this->faker->sentence(mt_rand(1,2)),
             'tanggal_jadwal' => $this->faker->dateTimeThisMonth(),   
-            'schedule_category_id' => $this->faker->numberBetween($min = 1, $max = 2),
+            'schedule_category_id' => $this->faker->numberBetween($min = 1, $max = 3),
             'slug_jadwal' => $this->faker->numberBetween($min = 999, $max = 99999),
         ];
     }

@@ -59,9 +59,6 @@
         @endfor
     </table>
 
-
-
-
     @php $number = 1; @endphp
 
 
@@ -88,8 +85,8 @@
                 <td><center>Rp. {{ number_format( $expenses[$start]->nominal_pengeluaran , 0, " ,",".") }},00</center></td>
                 <td>
                     <center>
-                        <a href="/perikanan/destroy/{{ $expenses[$start]->slug_pengeluaran }}">Hapus</a></a>
-                        <a href="/perikanan/edit/{{ $expenses[$start]->slug_pengeluaran }}">Edit</a>
+                        <a href="/penjualan/destroy/{{ $expenses[$start]->slug_pengeluaran }}">Hapus</a></a>
+                        <a href="/penjualan/edit/{{ $expenses[$start]->slug_pengeluaran }}">Edit</a>
                     </center>
                 </td>
                 @php error_reporting(E_ALL); @endphp

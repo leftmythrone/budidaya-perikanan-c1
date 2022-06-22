@@ -68,7 +68,6 @@
 <br><br>
     <h1>Create New</h1>
     <table>
-        @foreach ($edits as $edit)
             
         
         <form action="/perikanan/store" method="post">
@@ -115,7 +114,6 @@
 
             </tr>
 
-            @endforeach
             
         </form>
     </table>
@@ -131,6 +129,7 @@
 
 
 
+    @foreach ($edits as $edit)
 
 
     <br><br>
@@ -185,7 +184,7 @@
             
         </form>
 
-        {{-- @php error_reporting(E_ALL); @endphp --}}
+        @endforeach
 
     </table>
 <br><br><br><br>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use \App\Models\Schedule;
-
+use \App\Models\ScheduleCategory;
+use \App\Models\Stock;
 
 class ScheduleController extends Controller
 {
@@ -15,9 +17,25 @@ class ScheduleController extends Controller
      */
     public function index()
     {
+        $schedules = DB::table('schedules')
+        ->join('schedule_categories', 'schedule_categories.id', '=', 'schedule_category_id')
+        ->select('schedules.*', 'schedule_categories.jenis_jadwal')
+        ->orderBy('schedules.created_at','DESC')
+        ->get();
+
         return view('/pages/company/jadwal/jadwal', [
             // Judul Page
-            "title" => "Laporan",
+            "title" => "Penjadwalan",
+
+            // Pemanggil
+            "schedules" => $schedules,  
+            "schecats" => ScheduleCategory::latest('id')->get(),  
+            
+            "stocks" => Stock::latest('id')->get(),  
+            "number" => 1,
+
+            // Looping variable
+            "end" => 0
         ]);
     }
 
@@ -39,7 +57,24 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('schedules')->insert([
+            // Data nama ikan
+            'absen_jadwal'=>$request->name,
+
+            // Data foto ikan
+            'keterangan_jadwal' => $request->deskripsi,
+
+            // Data bobot ikan
+            'tanggal_jadwal' => $request->tanggal,
+
+            // Data foreign ID
+            'schedule_category_id' => $request->kategori,
+
+            // Data slug jadwal
+            'slug_jadwal' => $request->slug,   
+        ]);
+
+        return redirect('/penjadwalan');
     }
 
     /**
