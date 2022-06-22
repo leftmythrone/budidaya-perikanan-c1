@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_depan_pengguna');
             $table->string('nama_belakang_pengguna');
             $table->string('email_pengguna')->unique();
-            $table->integer('nomor_pengguna');
+            $table->string('nomor_pengguna');
             $table->string('alamat_pengguna');
             $table->string('password_pengguna');
             $table->string('slug_pengguna');

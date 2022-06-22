@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use \App\Models\Income;
+use \App\Models\Expense;
+
 
 class SalesController extends Controller
 {
@@ -13,9 +17,20 @@ class SalesController extends Controller
      */
     public function index()
     {
-        return view('/pages/company/jadwal/jadwal', [
+        return view('/pages/company/penjualan/penjualan', [
             // Judul Page
-            "title" => "Laporan",
+            "title" => "Data Ikan",
+
+            // Pemanggil
+            "incomes" => Income::latest('id')->get(),
+            
+            "expenses" => Expense::latest('id')->get(),  
+            
+            "number" => 1,
+
+            // Looping variable
+            "end" => 0
+
         ]);
     }
 

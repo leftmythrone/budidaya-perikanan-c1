@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('absen_jadwal')->nullable()->default(false);
             $table->string('keterangan_jadwal');
             $table->date('tanggal_jadwal');
-            $table->foreignId('schedule_category_id')->unique();
+            $table->foreignId('schedule_category_id');
             $table->string('slug_jadwal');
             $table->timestamps();
         });

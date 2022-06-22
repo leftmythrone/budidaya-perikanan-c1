@@ -22,15 +22,38 @@ class UtilitiesController extends Controller
      */
     public function index()
     {
-        return view('/pages/company/dashboard/dashboard', [
-            // Judul Page
-            "title" => "Dashboard",
-
-            // Pemanggil
-            "fish" => Fish::latest('id')->get(), 
-            "number" => 1,
-            
+        return view('/pages/utilities/login', [
+            "title" => "Login",
         ]);
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            
+            return redirect()->intended('/perikanan');
+        }
+
+        return back()->with('loginError', 'Login failed!');
+
+        // dd('Berhasil Login');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerate();
+
+        return redirect('/');
     }
 
     /**

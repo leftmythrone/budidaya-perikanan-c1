@@ -17,12 +17,17 @@ class FishController extends Controller
      */
     public function index()
     {
-        return view('/pages/company/perikanan/perikanan1', [
+        $fishs = DB::table('fish')
+        ->select('fish.*')
+        ->orderBy('id','DESC')
+        ->get();
+
+        return view('/pages/company/perikanan/perikanan', [
             // Judul Page
             "title" => "Data Ikan",
 
             // Pemanggil
-            "fish" => Fish::latest('id')->get(), 
+            "fish" => $fishs, 
             "number" => 1,
             "edits" => Temporarry::first()->get(), 
 
@@ -38,6 +43,31 @@ class FishController extends Controller
      * @return \Illuminate\Http\Response
      */ 
     public function create(Request $request)
+    {
+
+        return view('/pages/company/perikanan/perikanan', [
+            
+            // Judul Page
+            "title" => "Data Ikan",
+
+            // Pemanggil
+            "fish" => Fish::latest('id')->get(), 
+            "number" => 1,
+            "edits" => Temporarry::first()->get(), 
+
+            // Looping variable
+            "start" => 0,
+            "end" => 10
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
         DB::table('fish')->insert([
             // Data nama ikan
@@ -62,31 +92,8 @@ class FishController extends Controller
             'slug_ikan' => $request->slug    
         ]);
 
-        return view('/pages/company/perikanan/perikanan1', [
-            
-            // Judul Page
-            "title" => "Data Ikan",
+        return redirect('/perikanan');
 
-            // Pemanggil
-            "fish" => Fish::latest('id')->get(), 
-            "number" => 1,
-            "edits" => Temporarry::first()->get(), 
-
-            // Looping variable
-            "start" => 0,
-            "end" => 10
-        ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -114,7 +121,7 @@ class FishController extends Controller
     {
         $fish = DB::table('fish')->where('slug_ikan',$slug_ikan)->get();
 
-        return view('/pages/company/perikanan/perikanan1', [
+        return view('/pages/company/perikanan/perikanan', [
             
             // Judul Page
             "title" => "Data Ikan",
@@ -151,23 +158,7 @@ class FishController extends Controller
             'slug_ikan'=>$request->slug,
 		]);
 
-
-        return view('/pages/company/perikanan/perikanan1', [
-            
-            // Judul Page
-            "title" => "Data Ikan",
-
-            // Pemanggil
-            "fish" => Fish::latest('id')->get(),
-            
-            "edits" => Fish::latest('created_at')->get(),  
-            
-            "number" => 1,
-
-            // Looping variable
-            "start" => 0,
-            "end" => 10
-        ]);
+        return redirect('/perikanan');
     }
 
     /**
@@ -181,17 +172,7 @@ class FishController extends Controller
         
         DB::table('fish')->where('slug_ikan',$slug_ikan)->delete();
     
-        return view('/pages/company/perikanan/perikanan1', [
-            // Judul Page
-            "title" => "Data Ikan",
+        return redirect('/perikanan');
 
-            // Pemanggil
-            "fish" => Fish::latest('created_at')->get(), 
-            "number" => 1,
-
-            // Looping variable
-            "start" => 0,
-            "end" => 10
-        ]);
     }
 }

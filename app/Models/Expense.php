@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Expense extends Model
 {
     use HasFactory;
+
+    // GUARDING IMPORTANT
+    protected $guarded = ['id'];
 }

@@ -1,6 +1,10 @@
 @extends('layouts.main')
 
 @section('gate')
+
+{{-- START VARIABLE --}}
+@php  @endphp
+
 <br>
 <div class="headsection">
     <br>
@@ -37,7 +41,7 @@
             <th><center>Action</center></th>
         </tr>
         
-        @for ( $start ; $start < $end ; $start++ )
+        @for ( $start = 0 ; $start < 10 ; $start++ )
         <tr>
             @php error_reporting(0); @endphp
 
@@ -67,7 +71,7 @@
         @foreach ($edits as $edit)
             
         
-        <form action="/perikanan/create" method="post">
+        <form action="/perikanan/store" method="post">
             @csrf
             <br>
             <tr>

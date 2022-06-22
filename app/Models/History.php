@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class History extends Model
 {
     use HasFactory;
+
+    // GUARDING IMPORTANT
+    protected $guarded = ['id'];
 }

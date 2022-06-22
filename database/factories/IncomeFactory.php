@@ -17,7 +17,10 @@ class IncomeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'deskripsi_pemasukan' => $this->faker->sentence(mt_rand(1,2)),
+            'tanggal_pemasukan' => $this->faker->dateTimeThisMonth(),   
+            'nominal_pemasukan' => $this->faker->numberBetween($min = 999, $max = 99999),
+            'slug_pemasukan' => $this->faker->numberBetween($min = 999999, $max = 99999999),
         ];
     }
 }

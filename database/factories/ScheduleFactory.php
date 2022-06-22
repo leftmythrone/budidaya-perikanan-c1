@@ -17,7 +17,11 @@ class ScheduleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'absen_jadwal' => $this->faker->boolean,
+            'keterangan_jadwal' => $this->faker->sentence(mt_rand(1,2)),
+            'tanggal_jadwal' => $this->faker->dateTimeThisMonth(),   
+            'schedule_category_id' => $this->faker->numberBetween($min = 1, $max = 2),
+            'slug_jadwal' => $this->faker->numberBetween($min = 999, $max = 99999),
         ];
     }
 }

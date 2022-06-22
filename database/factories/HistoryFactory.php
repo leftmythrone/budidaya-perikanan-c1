@@ -17,7 +17,8 @@ class HistoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'keterangan_riwayat' => $this->faker->sentence(mt_rand(1,2)),
+            'tanggal_riwayat' => $this->faker->dateTimeThisMonth(),
         ];
     }
 }

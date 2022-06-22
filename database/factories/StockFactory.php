@@ -17,7 +17,7 @@ class StockFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'total_stok' => $this->faker->numberBetween($min = 1, $max = 20),
         ];
     }
 }

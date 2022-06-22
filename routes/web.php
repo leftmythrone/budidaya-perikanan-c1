@@ -13,6 +13,32 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SettingController;
 
 
+/*
+|--------------------------------------------------------------------------
+| SOURCE OF UTILITIES
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes source of utilities for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+// GETTING STARTED PAGE
+Route::get('/', [UtilitiesController::class, 'index'])->name('login');
+
+// AUTHENTICATE
+Route::post('/login', [UtilitiesController::class, 'authenticate']);
+
+// LOGOUT
+Route::get('/logout', [UtilitiesController::class, 'logout']);
+
+// ALL CHART PAGE
+Route::get('/mychart', [UtilitiesController::class, 'chart'])->middleware('auth');
+
+// PRINT CHART
+Route::get('/mychart/print', [UtilitiesController::class, 'printstore'])->middleware('auth');
+
 
 
 
@@ -52,9 +78,9 @@ Route::get('/dashboard/destroy', [UtilitiesController::class, 'destroy']);
 
 Route::get('/perikanan', [FishController::class, 'index']);
 
-Route::post('/perikanan/create', [FishController::class, 'create']);
+Route::get('/perikanan/create', [FishController::class, 'create']);
 
-Route::get('/perikanan/store', [FishController::class, 'store']);
+Route::post('/perikanan/store', [FishController::class, 'store']);
 
 Route::get('/perikanan/show/', [FishController::class, 'show']);
 
