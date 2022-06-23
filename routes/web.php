@@ -105,15 +105,15 @@ Route::get('/perikanan/destroy/{slug_ikan}', [FishController::class, 'destroy'])
 
 Route::get('/penjadwalan', [ScheduleController::class, 'index']);
 
-Route::post('/penjadwalan/create', [ScheduleController::class, 'create']);
+Route::get('/penjadwalan/create', [ScheduleController::class, 'create']);
 
-Route::get('/penjadwalan/store', [ScheduleController::class, 'store']);
+Route::post('/penjadwalan/store', [ScheduleController::class, 'store']);
 
-Route::get('/penjadwalan/edit', [ScheduleController::class, 'show']);
+Route::get('/penjadwalan/edit/{slug_jadwal}', [ScheduleController::class, 'edit']);
 
-Route::get('/penjadwalan/update', [ScheduleController::class, 'edit']);
+Route::post('/penjadwalan/update/{slug_jadwal}', [ScheduleController::class, 'update']);
 
-Route::get('/penjadwalan/destroy', [ScheduleController::class, 'destroy']);
+Route::get('/penjadwalan/destroy/{slug_jadwal}', [ScheduleController::class, 'destroy']);
 
 /*
 |--------------------------------------------------------------------------
@@ -197,15 +197,15 @@ Route::get('/pengaturan/destroy', [SettingController::class, 'destroy']);
 
 Route::get('/pengguna', [UserController::class, 'index']);
 
-Route::post('/pengguna/create', [UserController::class, 'create']);
+Route::get('/pengguna/create', [UserController::class, 'create']);
 
-Route::get('/pengguna/store', [UserController::class, 'store']);
+Route::post('/pengguna/store', [UserController::class, 'store']);
 
-Route::get('/pengguna/edit', [UserController::class, 'show']);
+Route::get('/pengguna/edit/{slug_pengguna}', [UserController::class, 'edit']);
 
-Route::get('/pengguna/update', [UserController::class, 'edit']);
+Route::post('/pengguna/update/{slug_pengguna}', [UserController::class, 'update']);
 
-Route::get('/pengguna/destroy', [UserController::class, 'destroy']);
+Route::get('/pengguna/destroy/{slug_pengguna}', [UserController::class, 'destroy']);
 
 /*
 |--------------------------------------------------------------------------

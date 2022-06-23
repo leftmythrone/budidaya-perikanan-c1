@@ -158,6 +158,8 @@ class FishController extends Controller
             'slug_ikan'=>$request->slug,
 		]);
 
+        
+
         return redirect('/perikanan');
     }
 

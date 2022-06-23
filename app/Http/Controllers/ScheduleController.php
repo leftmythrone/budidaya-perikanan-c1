@@ -65,7 +65,7 @@ class ScheduleController extends Controller
             'keterangan_jadwal' => $request->deskripsi,
 
             // Data bobot ikan
-            'tanggal_jadwal' => $request->tanggal,
+            'created_at' => $request->tanggal,
 
             // Data foreign ID
             'schedule_category_id' => $request->kategori,
@@ -94,9 +94,34 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug_jadwal)
     {
-        //
+        $schedules = DB::table('schedules')
+        ->join('schedule_categories', 'schedule_categories.id', '=', 'schedule_category_id')
+        ->select('schedules.*', 'schedule_categories.jenis_jadwal')
+        ->orderBy('schedules.created_at','DESC')
+        ->get();
+
+        $edit = DB::table('schedules')->where('slug_jadwal',$slug_jadwal)->get();
+
+        return view('/pages/company/jadwal/jadwal', [
+            
+            // Judul Page
+            "title" => "Penjadwalan",
+
+            // Pemanggil
+            "schedules" => $schedules, 
+            "schecats" => ScheduleCategory::latest('created_at')->get(),  
+            
+            "stocks" => Stock::latest('created_at')->get(),  
+            "number" => 1,
+            
+            "edits" => $edit, 
+            
+            // Looping variable
+            "start" => 0,
+            "end" => 10
+        ]);
     }
 
     /**
@@ -106,9 +131,27 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug_jadwal)
     {
-        //
+        DB::table('schedules')->where('slug_jadwal', $slug_jadwal)->update([
+            // Data nama ikan
+            'absen_jadwal'=>$request->name,
+
+            // Data foto ikan
+            'keterangan_jadwal' => $request->deskripsi,
+
+            // Data bobot ikan
+            'created_at' => $request->tanggal,
+
+            // Data foreign ID
+            'schedule_category_id' => $request->kategori,
+
+            // Data slug jadwal
+            'slug_jadwal' => $request->slug,   
+        ]);
+
+        return redirect('/penjadwalan');
+
     }
 
     /**
@@ -117,8 +160,11 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug_jadwal)
     {
-        //
+                
+        DB::table('schedules')->where('slug_jadwal',$slug_jadwal)->delete();
+    
+        return redirect('/penjadwalan');
     }
 }

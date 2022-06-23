@@ -102,7 +102,7 @@
         </div>
         {{-- FONT --}}
         <div class="sidefont">
-          <a href="/laporan">Report / Laporan</a>
+          <a href="/laporan">Stock / Stok</a>
         </div>
       </li>
 

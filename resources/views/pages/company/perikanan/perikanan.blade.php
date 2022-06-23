@@ -4,6 +4,7 @@
 
 {{-- START VARIABLE --}}
 @php  @endphp
+<link rel="stylesheet" href="/css/pages/company/table.css">
 
 <br>
 <div class="headsection">
@@ -26,7 +27,7 @@
 <div class="line">
 </div>
 <br>
-
+<div class="ouput">
         <table width="100%">
         <tr>
             {{-- TABLE HEADER --}}
@@ -64,6 +65,7 @@
         </tr>
         @endfor
     </table>
+    </div>
 
 <br><br>
     <h1>Create New</h1>

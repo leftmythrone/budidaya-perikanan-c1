@@ -124,48 +124,48 @@
           </li>
           <li>
             <a href="#">
-              <img src="images/jeans.jpg" alt="">
+              <img src="/img/fish.png" alt="">
               <span class="product">Hourglass Jeans </span>
             </a>
             <span class="price">$1567</span>
           </li>
           <li>
             <a href="#">
-              <img src="images/nike.jpg" alt="">
+              <img src="/img/fish.png" alt="">
               <span class="product">Nike Sport Shoe</span>
             </a>
             <span class="price">$1234</span>
           </li>
           <li>
             <a href="#">
-              <img src="images/scarves.jpg" alt="">
+              <img src="/img/fish.png" alt="">
               <span class="product">Hermes Silk Scarves.</span>
             </a>
             <span class="price">$2312</span>
           </li>
           <li>
             <a href="#">
-              <img src="images/blueBag.jpg" alt="">
+              <img src="/img/fish.png" alt="">
               <span class="product">Succi Ladies Bag</span>
             </a>
             <span class="price">$1456</span>
           </li>
           <li>
             <a href="#">
-              <img src="images/bag.jpg" alt="">
+              <img src="/img/fish.png" alt="">
               <span class="product">Gucci Womens's Bags</span>
             </a>
             <span class="price">$2345</span>
           <li>
             <a href="#">
-              <img src="images/addidas.jpg" alt="">
+              <img src="/img/fish.png" alt="">
               <span class="product">Addidas Running Shoe</span>
             </a>
             <span class="price">$2345</span>
           </li>
 <li>
             <a href="#">
-              <img src="images/shirt.jpg" alt="">
+              <img src="/img/fish.png" alt="">
               <span class="product">Bilack Wear's Shirt</span>
             </a>
             <span class="price">$1245</span>

@@ -2,7 +2,9 @@
 
 @section('gate')
 
+
 <h1>Penjadwalan</h1>
+<div class="output">
     <table width="100%">
         <tr>
             {{-- TABLE HEADER --}}
@@ -52,8 +54,7 @@
         </tr>
         @endfor
     </table>
-
-
+ </div>
 
 
     <br><br>
@@ -61,7 +62,7 @@
     <table>
             
         
-        <form action="/jadwal/store" method="post">
+        <form action="/penjadwalan/store" method="post">
             @csrf
             <br>
             <tr>
@@ -87,21 +88,12 @@
                 <td> : </td>
                 <td>
                     <center>
-                        <input type="number" name="kategori" value="">
-                    </center>
-                </td>
-            </tr>
-            <tr>
-                <td>Jenis Jadwal</td>
-                <td> : </td>
-                <td>
-                    <center>
                         {{-- DATA LIST INPUT CATEGORY --}}
-                        <select name="category">
+                        <select name="kategori">
                             @foreach ($schecats as $opt)
                                 <option value="{{ $opt->id }}">{{ $opt->jenis_jadwal }}</option> 
                             @endforeach
-                        </select>
+                        </select>   
                     </center>
                 </td>
 
@@ -111,13 +103,78 @@
 
             <tr>
                 <td colspan="2">
-                    <button type="submit">Submit</button>
+                    <center>
+                        <button type="submit">Submit</button>
+                    </center>
                 </td>
 
             </tr>
 
             
         </form>
+    </table>
+
+
+
+
+    
+
+    <br><br>
+    <h1>Create New</h1>
+    <table>
+            
+        @php error_reporting(0); @endphp
+
+        <form action="/penjadwalan/update/{{ $edits[0]->slug_jadwal }}" method="post">
+            @csrf
+            <br>
+            <tr>
+                <td>Deskripsi Jadwal</td>
+                <td> : </td>
+                <td>
+                    <center>
+                        <input type="text" name="deskripsi" value="{{ $edits[0]->keterangan_jadwal }}">
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td>Tanggal Jadwal</td>
+                <td> : </td>
+                <td>
+                    <center>
+                        <input type="date" name="tanggal" value="{{ $edits[0]->tanggal_jadwal }}">
+                    </center>    
+                </td>
+            </tr>
+            <tr>
+                <td>Kategori Jadwal</td>
+                <td> : </td>
+                <td>
+                    <center>
+                        {{-- DATA LIST INPUT CATEGORY --}}
+                        <select name="kategori">
+                            @foreach ($schecats as $opt)
+                                <option value="{{ $opt->id }}">{{ $opt->jenis_jadwal }}</option> 
+                            @endforeach
+                        </select>   
+                    </center>
+                </td>
+
+                {{-- AUTO GENERATE --}}
+                <input type="hidden" name="slug" value="@php $tabuid = uniqid('gfg', true); echo $tabuid; @endphp">
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <button type="submit">Submit</button>
+                    </center>
+                </td>
+
+            </tr>
+        </form>
+        @php error_reporting(E_ALL); @endphp
+
     </table>
 
 
