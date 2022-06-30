@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(2)->create();
+        // \App\Models\User::factory(2)->create();
         
         \App\Models\Fish::factory(10)->create();
         \App\Models\Stock::factory(1)->create();
@@ -45,15 +45,35 @@ class DatabaseSeeder extends Seeder
         User::create([
             'nama_depan_pengguna' => 'Admin',
             'nama_belakang_pengguna' => 'Berdosa',
-            'email_pengguna' => 'admin@gmail.com',
+            'username' => 'admin',
             'nomor_pengguna' => '089696969696',
             'alamat_pengguna' => 'Jl. Kedung Baruk 69',
-            'password_pengguna' => Hash::make('admin'),
-            'slug_pengguna' => 'basic.useradminGphsasdawdeasdw@d$',
+            'password' => Hash::make('admin'),
+            'slug_pengguna' => uniqid('gfg', true),
             'role_id' => 1,
         ]);
 
-        
+        User::create([
+            'nama_depan_pengguna' => 'Karyawan',
+            'nama_belakang_pengguna' => 'Budak',
+            'username' => 'karyawan',
+            'nomor_pengguna' => '031775423121',
+            'alamat_pengguna' => 'Jl. Kedung Baruk 69',
+            'password' => Hash::make('karyawan'),
+            'slug_pengguna' => uniqid('gfg', true),
+            'role_id' => 2,
+        ]);
+
+        User::create([
+            'nama_depan_pengguna' => 'Customer',
+            'nama_belakang_pengguna' => 'Budak',
+            'username' => 'customer',
+            'nomor_pengguna' => '023823721212',
+            'alamat_pengguna' => 'Jl. Kedung Baruk 69',
+            'password' => Hash::make('customer'),
+            'slug_pengguna' => uniqid('gfg', true),
+            'role_id' => 3,
+        ]);
 
         Temporarry::create([
             '404' => 'No Data',

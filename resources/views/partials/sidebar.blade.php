@@ -11,6 +11,9 @@
     <br><br><br><br><br>
     <ul>
 
+
+
+      @if ( auth()->user()->levels->jenis_peran === 'Admin' )
       {{-- 
       |--------------------------------------------------------------------------
       | PAGE DASHBOARD
@@ -26,7 +29,7 @@
         </div>
         {{-- FONT --}}
         <div class="sidefont">
-          <a href="/dashboard">Dashboard / Dasbor</a>
+          <a href="/dashboard/admin">Dashboard / Dasbor</a>
         </div>
       </li>
 
@@ -162,6 +165,117 @@
           <a href="/pengaturan">Setting / Pengaturan </a>
         </div>
       </li>
+
+      @elseif ( auth()->user()->levels->jenis_peran === 'Employee' )
+
+      {{-- 
+      |--------------------------------------------------------------------------
+      | PAGE DASHBOARD
+      |-------------------------------------------------------------------------- 
+      --}}
+
+      <li>
+        {{-- ICON --}}
+        <div class="sideicon">
+          <div class="wrapper">
+            <img src="/img/home.png" alt="">
+          </div> 
+        </div>
+        {{-- FONT --}}
+        <div class="sidefont">
+          <a href="/dashboard/admin">Dashboard / Dasbor</a>
+        </div>
+      </li>
+
+            {{-- 
+      |--------------------------------------------------------------------------
+      | PAGE FISH
+      |-------------------------------------------------------------------------- 
+      --}}
+
+      <li>
+        {{-- ICON --}}
+        <div class="sideicon">
+          <div class="wrapper">
+            <img src="/img/fish.png" alt="">
+          </div> 
+        </div>
+        {{-- FONT --}}
+        <div class="sidefont">
+          <a href="/perikanan">Fish / Perikanan</a>
+        </div>
+      </li>
+
+      {{-- 
+      |--------------------------------------------------------------------------
+      | PAGE REPORT
+      |-------------------------------------------------------------------------- 
+      --}}
+
+      <li>
+        {{-- ICON --}}
+        <div class="sideicon">
+          <div class="wrapper">
+            <img src="/img/report.png" alt="">
+          </div> 
+        </div>
+        {{-- FONT --}}
+        <div class="sidefont">
+          <a href="/laporan">Stock / Stok</a>
+        </div>
+      </li>
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      @else
+      {{-- 
+      |--------------------------------------------------------------------------
+      | PAGE DASHBOARD
+      |-------------------------------------------------------------------------- 
+      --}}
+
+        <li>
+          {{-- ICON --}}
+          <div class="sideicon">
+            <div class="wrapper">
+              <img src="/img/home.png" alt="">
+            </div> 
+          </div>
+          {{-- FONT --}}
+          <div class="sidefont">
+            <a href="/dashboard/user">Home / Ikan</a>
+          </div>
+        </li>
+      @endif
+
+    {{-- 
+    |--------------------------------------------------------------------------
+    | PAGE LOGOUT
+    |-------------------------------------------------------------------------- 
+    --}}
+
+    <li>
+      {{-- ICON --}}
+      <div class="sideicon">
+        <div class="wrapper">
+          <img src="/img/logout.png" alt="">
+        </div> 
+      </div>
+      {{-- FONT --}}
+      <div class="sidefont">
+        <a href="/logout">Logout</a>
+      </div>
+    </li>
       
     </ul>
 </div>

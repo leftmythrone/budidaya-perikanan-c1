@@ -17,10 +17,22 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    
+    public function levels()
+    {
+        return $this->belongsTo(\App\Models\Role::class, 'role_id');
+    }
+
+
     protected $fillable = [
-        'name',
-        'email',
+        'nama_depan_pengguna',
+        'nama_belakang_pengguna',
+        'username',
+        'nomor_pengguna',
+        'alamat_pengguna',
         'password',
+        'slug_pengguna',
+        'role_id'
     ];
 
     /**
@@ -41,4 +53,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
 }

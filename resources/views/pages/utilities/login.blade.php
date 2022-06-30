@@ -45,7 +45,7 @@
     
             <button type="submit">Login</button>  
 
-            {{-- <div class="register">
+            {{-- <div class="register">e
                 <p>Don't have an account? <a href="">Sign Up</a></p>
             </div> --}}
         </form>
@@ -54,12 +54,23 @@
 
 <div class="main">
     <p class="sign" align="center">Sign in</p>
-    <form class="form1">
-      <input class="un " type="text" align="center" placeholder="Username">
-      <input class="pass" type="password" align="center" placeholder="Password">
-      <a class="submit" align="center">Sign in</a>
-      <p class="forgot" align="center"><a href="#">Daftar Akun?</p>
-            
+    <form action="/login" method="post">
+        @csrf
+      
+        {{-- <input class="un" type="text" align="center" name="username" placeholder="username"> --}}
+        <input class="un" type="text" name="username" id="username" placeholder="username">
+
+        <input class="pass" type="password" name="password" id="password" placeholder="password">
+
+      
+      {{-- <input class="pass" type="password" align="center" name="password" placeholder="password"> --}}
+
+      <button class="submit" type="submit" align="center">Login</button>  
+ 
+      {{-- <a class="submit" type="submit" align="center">Sign in</a> --}}
+      <p class="forgot" align="center"><a href="/register">Daftar Akun?</p>
+    
+      </form>     
                 
     </div>
      

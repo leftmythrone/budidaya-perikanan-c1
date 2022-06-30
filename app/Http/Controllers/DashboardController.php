@@ -26,6 +26,21 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function customer_index()
+    {
+        return view('/pages/customer/dashboard/dashboard', [
+            // Judul Page
+            "title" => "Data Ikan",
+
+            // Pemanggil 
+
+            // Looping variable
+            "start" => 0,
+            "end" => 10
+        ]);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

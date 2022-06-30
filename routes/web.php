@@ -15,6 +15,8 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SettingController;
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | SOURCE OF UTILITIES
@@ -28,6 +30,9 @@ use App\Http\Controllers\SettingController;
 
 // GETTING STARTED PAGE
 Route::get('/', [UtilitiesController::class, 'index'])->name('login');
+
+Route::get('/register', [UtilitiesController::class, 'register']);
+Route::post('/registore', [UtilitiesController::class, 'registore']);
 
 // AUTHENTICATE
 Route::post('/login', [UtilitiesController::class, 'authenticate']);
@@ -46,7 +51,7 @@ Route::get('/mychart/print', [UtilitiesController::class, 'printstore'])->middle
 
 /*
 |--------------------------------------------------------------------------
-| Source Dashboard Routes
+| Source Admin
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -55,177 +60,193 @@ Route::get('/mychart/print', [UtilitiesController::class, 'printstore'])->middle
 |
 */
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+/*
+|--------------------------------------------------------------------------
+| Dashboard Routes
+|--------------------------------------------------------------------------
+*/
 
-Route::post('/dashboard/create', [DashboardController::class, 'create']);
+Route::get('/dashboard/admin', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::post('/dashboard/store', [DashboardController::class, 'store']);
+Route::post('/dashboard/admin/create', [DashboardController::class, 'create'])->middleware('auth');
 
-Route::get('/dashboard/edit', [DashboardController::class, 'show']);
+Route::post('/dashboard/admin/store', [DashboardController::class, 'store'])->middleware('auth');
 
-Route::get('/dashboard/update', [DashboardController::class, 'edit']);
+Route::get('/dashboard/admin/edit', [DashboardController::class, 'show'])->middleware('auth');
 
-Route::get('/dashboard/destroy', [DashboardController::class, 'destroy']);
+Route::get('/dashboard/admin/update', [DashboardController::class, 'edit'])->middleware('auth');
+
+Route::get('/dashboard/admin/destroy', [DashboardController::class, 'destroy'])->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
 | Source Fish Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
-Route::get('/perikanan', [FishController::class, 'index']);
+Route::get('/perikanan', [FishController::class, 'index'])->middleware('auth');
 
-Route::get('/perikanan/create', [FishController::class, 'create']);
+Route::get('/perikanan/create', [FishController::class, 'create'])->middleware('auth');
 
-Route::post('/perikanan/store', [FishController::class, 'store']);
+Route::post('/perikanan/store', [FishController::class, 'store'])->middleware('auth');
 
-Route::get('/perikanan/show/', [FishController::class, 'show']);
+Route::get('/perikanan/show/', [FishController::class, 'show'])->middleware('auth');
 
-Route::get('/perikanan/edit/{slug_ikan}', [FishController::class, 'edit']);
+Route::get('/perikanan/edit/{slug_ikan}', [FishController::class, 'edit'])->middleware('auth');
 
-Route::get('/perikanan/update/{slug_ikan}', [FishController::class, 'update']);
+Route::get('/perikanan/update/{slug_ikan}', [FishController::class, 'update'])->middleware('auth');
 
-Route::get('/perikanan/destroy/{slug_ikan}', [FishController::class, 'destroy']);
+Route::get('/perikanan/destroy/{slug_ikan}', [FishController::class, 'destroy'])->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
 | Source Penjadwalan Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
-Route::get('/penjadwalan', [ScheduleController::class, 'index']);
+Route::get('/penjadwalan', [ScheduleController::class, 'index'])->middleware('auth');
 
-Route::get('/penjadwalan/create', [ScheduleController::class, 'create']);
+Route::get('/penjadwalan/create', [ScheduleController::class, 'create'])->middleware('auth');
 
-Route::post('/penjadwalan/store', [ScheduleController::class, 'store']);
+Route::post('/penjadwalan/store', [ScheduleController::class, 'store'])->middleware('auth');
 
-Route::get('/penjadwalan/edit/{slug_jadwal}', [ScheduleController::class, 'edit']);
+Route::get('/penjadwalan/edit/{slug_jadwal}', [ScheduleController::class, 'edit'])->middleware('auth');
 
-Route::post('/penjadwalan/update/{slug_jadwal}', [ScheduleController::class, 'update']);
+Route::post('/penjadwalan/update/{slug_jadwal}', [ScheduleController::class, 'update'])->middleware('auth');
 
-Route::get('/penjadwalan/destroy/{slug_jadwal}', [ScheduleController::class, 'destroy']);
+Route::get('/penjadwalan/destroy/{slug_jadwal}', [ScheduleController::class, 'destroy'])->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
 | Source Penjualan Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
-Route::get('/penjualan', [SalesController::class, 'index']);
+Route::get('/penjualan', [SalesController::class, 'index'])->middleware('auth');
 
-Route::post('/penjualan/create', [SalesController::class, 'create']);
+Route::get('/penjualan/income/create/', [SalesController::class, 'increate'])->middleware('auth');
 
-Route::get('/penjualan/store', [SalesController::class, 'store']);
+Route::post('/penjualan/income/store', [SalesController::class, 'instore'])->middleware('auth');
 
-Route::get('/penjualan/edit', [SalesController::class, 'show']);
+Route::get('/penjualan/income/edit/{slug_pemasukan}', [SalesController::class, 'inedit'])->middleware('auth');
 
-Route::get('/penjualan/update', [SalesController::class, 'edit']);
+Route::post('/penjualan/income/update/{slug_pemasukan}', [SalesController::class, 'inupdate'])->middleware('auth');
 
-Route::get('/penjualan/destroy', [SalesController::class, 'destroy']);
+Route::get('/penjualan/income/destroy/{slug_pemasukan}', [SalesController::class, 'indestroy'])->middleware('auth');
+
+
+Route::get('/penjualan', [SalesController::class, 'index'])->middleware('auth');
+
+Route::get('/penjualan/expense/create/', [SalesController::class, 'excreate'])->middleware('auth');
+
+Route::post('/penjualan/expense/store', [SalesController::class, 'exstore'])->middleware('auth');
+
+Route::get('/penjualan/expense/edit/{slug_pengeluaran}', [SalesController::class, 'exedit'])->middleware('auth');
+
+Route::post('/penjualan/expense/update/{slug_pengeluaran}', [SalesController::class, 'exupdate'])->middleware('auth');
+
+Route::get('/penjualan/expense/destroy/{slug_pengeluaran}', [SalesController::class, 'exdestroy'])->middleware('auth');
+
 
 /*
 |--------------------------------------------------------------------------
 | Source Laporan Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
-Route::get('/laporan', [ReportController::class, 'index']);
+Route::get('/laporan', [ReportController::class, 'index'])->middleware('auth');
 
-Route::post('/laporan/create', [ReportController::class, 'create']);
+Route::post('/laporan/create', [ReportController::class, 'create'])->middleware('auth');
 
-Route::get('/laporan/store', [ReportController::class, 'store']);
+Route::get('/laporan/store', [ReportController::class, 'store'])->middleware('auth');
 
-Route::get('/laporan/edit', [ReportController::class, 'show']);
+Route::get('/laporan/edit', [ReportController::class, 'show'])->middleware('auth');
 
-Route::get('/laporan/update', [ReportController::class, 'edit']);
+Route::get('/laporan/update', [ReportController::class, 'edit'])->middleware('auth');
 
-Route::get('/laporan/destroy', [ReportController::class, 'destroy']);
+Route::get('/laporan/destroy', [ReportController::class, 'destroy'])->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
 | Source Pengaturan Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
-Route::get('/pengaturan', [SettingController::class, 'index']);
+Route::get('/pengaturan', [SettingController::class, 'index'])->middleware('auth');
 
-Route::post('/pengaturan/create', [SettingController::class, 'create']);
+Route::post('/pengaturan/create', [SettingController::class, 'create'])->middleware('auth');
 
-Route::get('/pengaturan/store', [SettingController::class, 'store']);
+Route::get('/pengaturan/store', [SettingController::class, 'store'])->middleware('auth');
 
-Route::get('/pengaturan/edit', [SettingController::class, 'show']);
+Route::get('/pengaturan/edit', [SettingController::class, 'show'])->middleware('auth');
 
-Route::get('/pengaturan/update', [SettingController::class, 'edit']);
+Route::get('/pengaturan/update', [SettingController::class, 'edit'])->middleware('auth');
 
-Route::get('/pengaturan/destroy', [SettingController::class, 'destroy']);
+Route::get('/pengaturan/destroy', [SettingController::class, 'destroy'])->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
 | Source Pengguna Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
-Route::get('/pengguna', [UserController::class, 'index']);
+Route::get('/pengguna', [UserController::class, 'index'])->middleware('auth');
 
-Route::get('/pengguna/create', [UserController::class, 'create']);
+Route::get('/pengguna/create', [UserController::class, 'create'])->middleware('auth');
 
-Route::post('/pengguna/store', [UserController::class, 'store']);
+Route::post('/pengguna/store', [UserController::class, 'store'])->middleware('auth');
 
-Route::get('/pengguna/edit/{slug_pengguna}', [UserController::class, 'edit']);
+Route::get('/pengguna/edit/{slug_pengguna}', [UserController::class, 'edit'])->middleware('auth');
 
-Route::post('/pengguna/update/{slug_pengguna}', [UserController::class, 'update']);
+Route::post('/pengguna/update/{slug_pengguna}', [UserController::class, 'update'])->middleware('auth');
 
-Route::get('/pengguna/destroy/{slug_pengguna}', [UserController::class, 'destroy']);
+Route::get('/pengguna/destroy/{slug_pengguna}', [UserController::class, 'destroy'])->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
 | Source Riwayat Routes
 |--------------------------------------------------------------------------
+*/
+
+Route::get('/riwayat', [HistoryController::class, 'index'])->middleware('auth');
+
+Route::post('/riwayat/create', [HistoryController::class, 'create'])->middleware('auth');
+
+Route::get('/riwayat/store', [HistoryController::class, 'store'])->middleware('auth');
+
+Route::get('/riwayat/edit', [HistoryController::class, 'show'])->middleware('auth');
+
+Route::get('/riwayat/update', [HistoryController::class, 'edit'])->middleware('auth');
+
+Route::get('/riwayat/destroy', [HistoryController::class, 'destroy'])->middleware('auth');
+
+
+
+/*
+|--------------------------------------------------------------------------
+| SOURCE OF CUSTOMER / CLIENT
+|--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can register web routes source of utilities for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
 */
 
-Route::get('/riwayat', [HistoryController::class, 'index']);
+/*
+|--------------------------------------------------------------------------
+| Source Home User Routes
+|--------------------------------------------------------------------------
+*/
 
-Route::post('/riwayat/create', [HistoryController::class, 'create']);
+Route::get('/dashboard/user', [DashboardController::class, 'customer_index'])->middleware('auth');
 
-Route::get('/riwayat/store', [HistoryController::class, 'store']);
+Route::post('/dashboard/user/create', [DashboardController::class, 'customer_create'])->middleware('auth');
 
-Route::get('/riwayat/edit', [HistoryController::class, 'show']);
+Route::post('/dashboard/user/store', [DashboardController::class, 'store'])->middleware('auth');
 
-Route::get('/riwayat/update', [HistoryController::class, 'edit']);
+Route::get('/dashboard/user/edit', [DashboardController::class, 'show'])->middleware('auth');
 
-Route::get('/riwayat/destroy', [HistoryController::class, 'destroy']);
+Route::get('/dashboard/user/update', [DashboardController::class, 'edit'])->middleware('auth');
+
+Route::get('/dashboard/user/destroy', [DashboardController::class, 'destroy'])->middleware('auth');
