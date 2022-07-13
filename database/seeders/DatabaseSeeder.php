@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'nomor_pengguna' => '089696969696',
             'alamat_pengguna' => 'Jl. Kedung Baruk 69',
-            'password' => Hash::make('admin'),
+            'password' => Hash::make('1'),
             'slug_pengguna' => uniqid('gfg', true),
             'role_id' => 1,
         ]);
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'karyawan',
             'nomor_pengguna' => '031775423121',
             'alamat_pengguna' => 'Jl. Kedung Baruk 69',
-            'password' => Hash::make('karyawan'),
+            'password' => Hash::make('1'),
             'slug_pengguna' => uniqid('gfg', true),
             'role_id' => 2,
         ]);
@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'customer',
             'nomor_pengguna' => '023823721212',
             'alamat_pengguna' => 'Jl. Kedung Baruk 69',
-            'password' => Hash::make('customer'),
+            'password' => Hash::make('1'),
             'slug_pengguna' => uniqid('gfg', true),
             'role_id' => 3,
         ]);

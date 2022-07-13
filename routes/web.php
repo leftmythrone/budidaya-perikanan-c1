@@ -154,17 +154,17 @@ Route::get('/penjualan/expense/destroy/{slug_pengeluaran}', [SalesController::cl
 |--------------------------------------------------------------------------
 */
 
-Route::get('/laporan', [ReportController::class, 'index'])->middleware('auth');
+Route::get('/stock', [StockController::class, 'index'])->middleware('auth');
 
-Route::post('/laporan/create', [ReportController::class, 'create'])->middleware('auth');
+Route::post('/stock/create', [StockController::class, 'create'])->middleware('auth');
 
-Route::get('/laporan/store', [ReportController::class, 'store'])->middleware('auth');
+Route::get('/stock/store', [StockController::class, 'store'])->middleware('auth');
 
-Route::get('/laporan/edit', [ReportController::class, 'show'])->middleware('auth');
+Route::get('/stock/edit', [StockController::class, 'show'])->middleware('auth');
 
-Route::get('/laporan/update', [ReportController::class, 'edit'])->middleware('auth');
+Route::get('/stock/update', [StockController::class, 'edit'])->middleware('auth');
 
-Route::get('/laporan/destroy', [ReportController::class, 'destroy'])->middleware('auth');
+Route::get('/stock/destroy', [StockController::class, 'destroy'])->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -250,3 +250,22 @@ Route::get('/dashboard/user/edit', [DashboardController::class, 'show'])->middle
 Route::get('/dashboard/user/update', [DashboardController::class, 'edit'])->middleware('auth');
 
 Route::get('/dashboard/user/destroy', [DashboardController::class, 'destroy'])->middleware('auth');
+
+
+/*
+|--------------------------------------------------------------------------
+| Source Home User Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/history/user', [HistoryController::class, 'customer_index'])->middleware('auth');
+
+Route::post('/history/user/create', [HistoryController::class, 'customer_create'])->middleware('auth');
+
+Route::post('/history/user/store', [HistoryController::class, 'customer_store'])->middleware('auth');
+
+Route::get('/history/user/edit', [HistoryController::class, 'customer_show'])->middleware('auth');
+
+Route::get('/history/user/update', [HistoryController::class, 'customer_edit'])->middleware('auth');
+
+Route::get('/history/user/destroy', [HistoryController::class, 'customer_destroy'])->middleware('auth');

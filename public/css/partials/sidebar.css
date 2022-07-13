@@ -1,6 +1,6 @@
 .sidebar {
     width: 360px;
-    background-color: #05050D;
+    background-color: #101112;
     height: 100%;
     position: fixed;
     box-sizing: border-box;
@@ -46,8 +46,8 @@
     right: 20px;
     width: 45px;
     height: 45px;
-    background: linear-gradient(700deg,#1c2d55, #15213C);
-    box-shadow: 5px 5px 6px rgba(255, 255, 255, 0.1);
+    /* background: linear-gradient(700deg,#1c2d55, #15213C);
+    box-shadow: 5px 5px 6px rgba(255, 255, 255, 0.1); */
     border-radius: 5px;
 
 }

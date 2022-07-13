@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use \App\Models\User;
-use \App\Models\Role;
 use \App\Models\Temporarry;
+use \App\Models\Stock;
 
 
-class UserController extends Controller
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,24 +17,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = DB::table('users')
-        ->join('roles', 'roles.id', '=', 'role_id')
-        ->select('users.*', 'roles.jenis_peran')
-        ->orderBy('users.created_at','DESC')
-        ->get();
-
-        return view('/pages/company/pengguna/pengguna', [
+        return view('/pages/company/stok/stok', [
             // Judul Page
-            "title" => "Data Pengguna",
+            "title" => "Data Stock",
 
             // Pemanggil
-            "users" => $user,  
-            "roles" => Role::latest('created_at')->get(),  
+            "stocks" => Stock::latest('created_at')->get(),  
             
             "number" => 1,
 
             // Looping variable
-            "end" => 0
+            "end" => 0,
+
+            // JavaScript
+            "js" => 0
         ]);
     }
 
@@ -46,28 +41,17 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        $user = DB::table('users')
-        ->join('roles', 'roles.id', '=', 'role_id')
-        ->select('users.*', 'roles.jenis_peran')
-        ->orderBy('users.created_at','DESC')
-        ->get();
-
-        return view('/pages/company/pengguna/pengguna', [       
+        return view('/pages/company/stok/stok', [
             // Judul Page
-            "title" => "Data Pengguna",
+            "title" => "Data Stock",
 
             // Pemanggil
-            "users" => $user,  
-            "roles" => Role::latest('created_at')->get(), 
-            "edits" => Temporarry::first()->get(),  
+            "stocks" => Stock::latest('created_at')->get(),  
             
-            // Looping variable
             "number" => 1,
-            "start" => 0,
-            "end" => 10,
 
-            // JavaScript
-            "js" => 1
+            // Looping variable
+            "end" => 0
         ]);
     }
 
@@ -105,7 +89,7 @@ class UserController extends Controller
             'role_id' => $request->peran,
         ]);
 
-        return redirect('/pengguna');
+        return redirect('/stok');
     }
 
     /**
@@ -127,30 +111,17 @@ class UserController extends Controller
      */
     public function edit($slug_pengguna)
     {
-        $users = DB::table('users')
-        ->join('roles', 'roles.id', '=', 'role_id')
-        ->select('users.*', 'roles.jenis_peran')
-        ->orderBy('users.created_at','DESC')
-        ->where('slug_pengguna',$slug_pengguna)
-        ->get();
-
-        return view('/pages/company/pengguna/pengguna', [       
+        return view('/pages/company/stok/stok', [
             // Judul Page
-            "title" => "Data Pengguna",
+            "title" => "Data Stock",
 
             // Pemanggil
-            "users" => User::latest('created_at')->get(),  
-            "roles" => Role::latest('created_at')->get(), 
-            "edits" => $users,  
+            "stocks" => Stock::latest('created_at')->get(),  
             
-            // Looping variable
-            "start" => 0,
-            "end" => 10,
             "number" => 1,
 
-
-            // JavaScript
-            "js" => 2
+            // Looping variable
+            "end" => 0
             ]);
     }
 
@@ -189,7 +160,7 @@ class UserController extends Controller
             'role_id' => $request->peran,
         ]);
 
-        return redirect('/pengguna');
+        return redirect('/stok');
     }
 
     /**
@@ -202,6 +173,6 @@ class UserController extends Controller
     {
         DB::table('users')->where('slug_pengguna',$slug_pengguna)->delete();
     
-        return redirect('/pengguna');
+        return redirect('/stok');
     }
 }

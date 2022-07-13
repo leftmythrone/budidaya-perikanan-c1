@@ -1,14 +1,14 @@
 <div class="sidebar">
     <div class="logo">
-      {{-- <img src="/img/Logo.png" alt=""> --}}
+      <img src="/img/Logo.png" alt="">
     </div>
     <br>
     <div class="sideheading">
-      {{-- <h1>PT. Sukaiwaks</h1>
-      <h4>Aplikasi Pengelolaan & Pembudidayaan Ikan Nishikigoi</h4> --}}
+      <h1>PT. Sukaiwaks</h1>
+      <h4>Aplikasi Pengelolaan & Pembudidayaan Ikan Nishikigoi</h4>
     </div>
   
-    <br><br><br><br><br>
+    <br><br>
     <ul>
 
 
@@ -105,7 +105,7 @@
         </div>
         {{-- FONT --}}
         <div class="sidefont">
-          <a href="/laporan">Stock / Stok</a>
+          <a href="/stock">Stock / Stok</a>
         </div>
       </li>
 
@@ -153,41 +153,23 @@
       |-------------------------------------------------------------------------- 
       --}}
 
-      <li>
+      {{-- <li> --}}
         {{-- ICON --}}
-        <div class="sideicon">
+        {{-- <div class="sideicon">
           <div class="wrapper">
             <img src="/img/setting.png" alt="">
           </div> 
-        </div>
+        </div> --}}
         {{-- FONT --}}
-        <div class="sidefont">
-          <a href="/pengaturan">Setting / Pengaturan </a>
+        {{-- <div class="sidefont"> --}}
+          {{-- <a href="/pengaturan">Setting / Pengaturan </a>
         </div>
-      </li>
+      </li> --}}
 
       @elseif ( auth()->user()->levels->jenis_peran === 'Employee' )
 
-      {{-- 
-      |--------------------------------------------------------------------------
-      | PAGE DASHBOARD
-      |-------------------------------------------------------------------------- 
-      --}}
 
-      <li>
-        {{-- ICON --}}
-        <div class="sideicon">
-          <div class="wrapper">
-            <img src="/img/home.png" alt="">
-          </div> 
-        </div>
-        {{-- FONT --}}
-        <div class="sidefont">
-          <a href="/dashboard/admin">Dashboard / Dasbor</a>
-        </div>
-      </li>
-
-            {{-- 
+        {{-- 
       |--------------------------------------------------------------------------
       | PAGE FISH
       |-------------------------------------------------------------------------- 
@@ -221,12 +203,29 @@
         </div>
         {{-- FONT --}}
         <div class="sidefont">
-          <a href="/laporan">Stock / Stok</a>
+          <a href="/stock">Stock / Stok</a>
+        </div>
+      </li> 
+
+
+      {{-- 
+      |--------------------------------------------------------------------------
+      | PAGE SCHEDULE
+      |-------------------------------------------------------------------------- 
+      --}}
+
+      <li>
+        {{-- ICON --}}
+        <div class="sideicon">
+          <div class="wrapper">
+            <img src="/img/date.png" alt="">
+          </div> 
+        </div>
+        {{-- FONT --}}
+        <div class="sidefont">
+          <a href="/penjadwalan">Schedule / Jadwal</a>
         </div>
       </li>
-
-
-
 
 
 
@@ -254,8 +253,27 @@
           {{-- FONT --}}
           <div class="sidefont">
             <a href="/dashboard/user">Home / Ikan</a>
-          </div>
+          </dicov>
         </li>
+
+            {{-- 
+      |--------------------------------------------------------------------------
+      | PAGE DASHBOARD
+      |-------------------------------------------------------------------------- 
+      --}}
+
+      <li>
+        {{-- ICON --}}
+        <div class="sideicon">
+          <div class="wrapper">
+            <img src="/img/report.png" alt="">
+          </div> 
+        </div>
+        {{-- FONT --}}
+        <div class="sidefont">
+          <a href="/ecommerce/user">History</a>
+        </div>
+      </li>
       @endif
 
     {{-- 

@@ -8,38 +8,19 @@
     clear: both;
 }
 
-.headsection input {
-    float: right;
-    margin-right: 20px;
-    background-color: #05050D;
-    border-radius: 5px;
-    border: 2px solid white;
-    text-align: center;
-    color: white;
-    width: 400px;
-    height: 40px;
-}
-
-.headsection button {
-    float: right;
-    margin-right: 20px;
-    background-color: #15213C;
-    background: linear-gradient(120deg,#15213C, #216B98);
-    border-radius: 5px;
-    border: 0px solid white;
-    text-align: center;
-    color: white;
-    width: 400px;
-    height: 40px;
-    font-weight: bold;
-}
-
 .headsection h1 {
- font-weight: 500;
- font-size: 40px;   
+    margin-left: 0  px;
+    font-size: 25px;
+    font-weight: bold;
+    border: 0.3px;
+    color: #34364A;
 }
 
-.headsection h2 {
-    font-size: 20px;
+.headsection h4 {
+    margin-left: 0px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0.3px;
+    color: #34364A;
     opacity: 60%;
 }

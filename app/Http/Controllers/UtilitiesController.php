@@ -44,8 +44,22 @@ class UtilitiesController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            
-            return redirect()->intended('dashboard/admin');
+
+            if( auth()->user()->levels->jenis_peran === 'Employee') 
+            {
+                return redirect()->intended('perikanan');
+
+            }
+            else if( auth()->user()->levels->jenis_peran === 'Customer') 
+            {
+                return redirect()->intended('dashboard/user');
+
+            }
+            else
+            {
+                return redirect()->intended('dashboard/admin');
+
+            }
         }
 
         return back()->with('loginError', 'Login failed!');

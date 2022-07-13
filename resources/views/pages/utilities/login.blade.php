@@ -53,7 +53,7 @@
 </div> -->
 
 <div class="main">
-    <p class="sign" align="center">Sign in</p>
+    <p class="sign" align="center">Login</p>
     <form action="/login" method="post">
         @csrf
       

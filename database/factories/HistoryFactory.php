@@ -17,6 +17,7 @@ class HistoryFactory extends Factory
     public function definition()
     {
         return [
+            'history_user_id' => $this->faker->numberBetween($min = 1, $max = 3),
             'keterangan_riwayat' => $this->faker->sentence(mt_rand(1,2)),
             'tanggal_riwayat' => $this->faker->dateTimeThisMonth(),
         ];

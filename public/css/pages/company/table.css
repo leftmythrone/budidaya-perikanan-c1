@@ -1,3 +1,238 @@
-.ouput table {
-  border: 1px solid rgb(255, 255, 255);
+.tables img {
+ width: 30px;
+ height: 30px;
+}
+
+.tables button {
+  border: none;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(700deg,#1c2d55, #15213C);
+  border-radius: 5px;
+}
+
+.tables ul li
+{
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.breed img{
+  width: 25px;
+  height: 25px;
+}
+
+.breed button {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(700deg,#1c2d55, #15213C);
+  border-radius: 15px;
+}
+
+.addbtn {
+  float: right;
+  position: relative;
+  bottom: 100px;
+}
+
+.addbtn button {
+  background-color: greenyellow;
+  color: white;
+  font-weight: bold;
+  border: none;
+  width: 300px;
+  height: 40px;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.addnew {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  display: none;
+  position: fixed;
+  left: 40%;
+  top: 30%;
+  z-index: 4;
+  padding: 50px;
+  width: 600px;
+  /* height: 400px; */
+  border-radius: 1.5em;
+  /* box-shadow: 0px 11px 35px 2px rgb(255, 255, 255); */
+}
+
+.addnew button {
+  border: none;
+  height: 40px;
+  width: 300px;
+  border-radius: 20px;
+  position: relative;
+  top: 20px;
+  left: 130px;
+  background-color: rgb(121, 179, 35);
+  /* background: linear-gradient(120deg,#153c2d, #216B98); */
+  font-weight: bold;
+  color: white;
+  /* right: 90px; */
+}
+
+.addnew input {
+  background-color: #E5E9F2;
+  text-align: center;
+  color: #34364A;
+  opacity: 80%;
+  border-radius: 30px;
+  width: 330px;
+  height: 30px;
+  border: none;
+  margin-left: 20px;
+}
+
+.addnew h1 {
+  margin-left: 0px;
+  font-size: 25px;
+  font-weight: bold;
+  border: 0.3px;
+  color: #34364A;
+}
+
+.addnew h4 {
+  margin-left: 0px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 0.3px;
+  color: #34364A;
+  opacity: 60%;
+}
+
+.addnew label {
+  color: #34364A;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+  opacity: 80%;
+}
+
+.addnew select {
+  background-color: #E5E9F2;
+  text-align: center;
+  color: #34364A;
+  opacity: 80%;
+  border-radius: 30px;
+  width: 330px;
+  height: 30px;
+  border: none;
+  margin-left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.edit {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  display: none;
+  position: fixed;
+  left: 40%;
+  top: 30%;
+  z-index: 4;
+  padding: 50px;
+  width: 600px;
+  /* height: 400px; */
+  border-radius: 1.5em;
+  /* box-shadow: 0px 11px 35px 2px rgb(255, 255, 255); */
+}
+
+.edit button {
+  border: none;
+  height: 40px;
+  width: 300px;
+  border-radius: 20px;
+  position: relative;
+  top: 20px;
+  left: 130px;
+  background-color: rgb(121, 179, 35);
+  /* background: linear-gradient(120deg,#153c2d, #216B98); */
+  font-weight: bold;
+  color: white;
+  /* right: 90px; */
+}
+
+.edit input {
+  background-color: #E5E9F2;
+  text-align: center;
+  color: #34364A;
+  opacity: 80%;
+  border-radius: 30px;
+  width: 330px;
+  height: 30px;
+  border: none;
+  margin-left: 20px;
+}
+
+.edit h1 {
+  margin-left: 0px;
+  font-size: 25px;
+  font-weight: bold;
+  border: 0.3px;
+  color: #34364A;
+}
+
+.edit h4 {
+  margin-left: 0px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 0.3px;
+  color: #34364A;
+  opacity: 60%;
+}
+
+.edit label {
+  color: #34364A;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+  opacity: 80%;
+}
+
+.edit select {
+  background-color: #E5E9F2;
+  text-align: center;
+  color: #34364A;
+  opacity: 80%;
+  border-radius: 30px;
+  width: 330px;
+  height: 30px;
+  border: none;
+  margin-left: 20px;
 }

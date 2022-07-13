@@ -23,6 +23,11 @@ class User extends Authenticatable
         return $this->belongsTo(\App\Models\Role::class, 'role_id');
     }
 
+    public function history()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'history_user_id');
+    }
+
 
     protected $fillable = [
         'nama_depan_pengguna',

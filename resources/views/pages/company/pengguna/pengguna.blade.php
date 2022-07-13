@@ -1,244 +1,124 @@
 @extends('layouts.main')
 
 @section('gate')
+
+
+
+{{-- OVERLAY --}}
+<div id="overlay" onclick="off()"></div>
+<br><br><br><br>
+
+{{-- START VARIABLE --}}
 <link rel="stylesheet" href="/css/pages/company/table.css">
-<h1>{{ $title }}</h1>
-<div class="output">
-    <table width="100%">
+
+<div class="headsection">
+ 
+    {{-- HEADING --}}
+    <h1>Pages {{ $title }}</h1>
+
+
+    {{-- SUMMARY --}}
+    <h4>Pada page ini berisi seluruh pencatatan <br> {{ $title }} pada PT. Sukaiwaks</h4>
+
+<br><hr>
+
+</div>
+<div class="addbtn">
+    <a href="/pengguna/create"><button type="button">Add new Ikan +</button></a>
+</div>
+<br>
+
+<div class="tables">
+        <table width="100%">
         <tr>
             {{-- TABLE HEADER --}}
-            <th><center>No</center></th>
-            <th><center>Nama Depan</center></th> 
-            <th><center>Nama Belakang</center></th>
-            <th><center>Email Pengguna</center></th>
+            <th><center>No</center></th> 
+            <th><center>Nama Pengguna</center></th>
+            <th><center>Username</center></th>
             <th><center>Nomor Pengguna</center></th>
-            <th><center>Alamat Pengguna</center></th>
+            <th><center>Alamat</center></th>
             <th><center>Level</center></th>
-
             <th><center>Action</center></th>
+        </tr>
+        <tr>
+            <td colspan="99"><hr></td>
         </tr>
         
         @for ( $start = 0 ; $start < 10 ; $start++ )
-        <tr>
+            
             @php error_reporting(0); @endphp
 
-                <td><center>{{ $number++ }}</center></td>
-                <td><center>{{ $users[$start]->nama_depan_pengguna }}</center></td>
-                <td><center>{{ $users[$start]->nama_depan_pengguna }}</center></td>
-                <td><center>{{ $users[$start]->email_pengguna }}</center></td>
-                <td><center>{{ $users[$start]->nomor_pengguna }}</center></td>
-                <td><center>{{ $users[$start]->email_pengguna }}</center></td>
-                <td><center>{{ $users[$start]->jenis_peran }}</center></td>
-                <td>
-                    <center>
-                        <a href="/pengguna/destroy/{{ $users[$start]->slug_pengguna }}">Hapus</a></a>
-                        <a href="/pengguna/edit/{{ $users[$start]->slug_pengguna }}">Edit</a>
-                    </center>
-                </td>
+                @if ( $users[$start]->id === null )
 
-                @php error_reporting(E_ALL); @endphp
+                @else
+                
+                <tr>
+
+                    <td><center>{{ $number++ }}</center></td>
+                    <td><center>
+                        <ul>
+                            <center>
+                                {{ $users[$start]->nama_depan_pengguna }}
+                                {{ $users[$start]->nama_belakang_pengguna }}
+                            </center>
+                        </ul> 
+                        </center>
+                    </td>
+                    <td><center>{{ $users[$start]->username }}</center></td>
+                    <td><center>{{ $users[$start]->nomor_pengguna }} L</center></td>
+                    <td><center>{{ $users[$start]->alamat_pengguna }}</center></td>
+                    <td><center>{{ $users[$start]->jenis_peran }}</center></td>
+                    <td>
+                        <center>
+                            <a href="/pengguna/edit/{{ $users[$start]->slug_pengguna }}"><button><img src="/img/pencil_white.png" alt=""></button></a> 
+                            <a href="/pengguna/destroy/{{ $users[$start]->slug_pengguna }}"><button><img src="/img/trash_white.png" alt=""></button></a> 
+                        </center>
+                    </td>
+                
+                </tr>
+
+            @php error_reporting(E_ALL); @endphp
+
+        <tr>
+            <td colspan="99">
+                <hr>
+            </td>
         </tr>
+        @endif
+
         @endfor
     </table>
- </div>
+    </div>
 
+@include('pages.company.pengguna.crud')
 
- <br><br>
- <h1>Create New</h1>
- <table>
-         
-     
-     <form action="/pengguna/store" method="post">
-         @csrf
-         <br>
-         <tr>
-             <td>Nama Depan</td>
-             <td> : </td>
-             <td>
-                 <center>
-                     <input type="text" name="depan" value="">
-                 </center>
-             </td>
-         </tr>
-         <tr>
-             <td>Nama Belakang</td>
-             <td> : </td>
-             <td>
-                 <center>
-                     <input type="text" name="belakang" value="">
-                 </center>    
-             </td>
-         </tr>
-         <tr>
-            <td>Email</td>
-            <td> : </td>
-            <td>
-                <center>
-                    <input type="email" name="email" value="">
-                </center>    
-            </td>
-        </tr>
-        <tr>
-            <td>Nomor</td>
-            <td> : </td>
-            <td>
-                <center>
-                    <input type="text" name="nomor" value="">
-                </center>    
-            </td>
-        </tr>
-        <tr>
-            <td>Alamat</td>
-            <td> : </td>
-            <td>
-                <center>
-                    <input type="text" name="alamat" value="">
-                </center>    
-            </td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td> : </td>
-            <td>
-                <center>
-                    <input type="password" name="password" value="">
-                </center>    
-            </td>
-        </tr>
-         <tr>
-             <td>Level</td>
-             <td> : </td>
-             <td>
-                 <center>
-                     {{-- DATA LIST INPUT CATEGORY --}}
-                     <select name="peran">
-                         @foreach ($roles as $opt)
-                             <option value="{{ $opt->id }}">{{ $opt->jenis_peran }}</option> 
-                         @endforeach
-                     </select>   
-                 </center>
-             </td>
+{{-- SCRIPT --}}
+@if ( $js == 1 )
 
-             {{-- AUTO GENERATE --}}
-             <input type="hidden" name="slug" value="@php $tabuid = uniqid('gfg', true); echo $tabuid; @endphp">
-         </tr>
+{{-- SCRIPT EDIT CATEGORY --}}
+<script>    
+    const categoryPop = document.getElementById('addnew');
+    const categoryOverlay = document.getElementById('overlay');
 
-         <tr>
-             <td colspan="2">
-                 <center>
-                     <button type="submit">Submit</button>
-                 </center>
-             </td>
+    categoryPop.style.display = "block";
+    categoryPop.display = "none";
+    categoryOverlay.style.display = "block" 
+</script>
 
-         </tr>
+{{-- SCRIPT VIEW CATEGORY --}}
+@elseif ( $js == 2 )
+<script>    
+    const categoryPop = document.getElementById('edit');
+    const categoryOverlay = document.getElementById('overlay');
 
-         
-     </form>
- </table>
+    categoryPop.style.display = "block";
+    categoryPop.display = "none";
+    categoryOverlay.style.display = "block"
+</script>   
 
-
-
-
-
-
- <br><br>
- <h1>Create New</h1>
- <table>
-
-    @php error_reporting(0); @endphp
-
-
-     <form action="/pengguna/update/{{ $edits[0]->slug_pengguna }}" method="post">
-         @csrf
-         <br>
-         <tr>
-             <td>Nama Depan</td>
-             <td> : </td>
-             <td>
-                 <center>
-                     <input type="text" name="depan" value="{{ $edits[0]->nama_depan_pengguna }}">
-                 </center>
-             </td>
-         </tr>
-         <tr>
-             <td>Nama Belakang</td>
-             <td> : </td>
-             <td>
-                 <center>
-                     <input type="text" name="belakang" value="{{ $edits[0]->nama_belakang_pengguna }}">
-                 </center>    
-             </td>
-         </tr>
-         <tr>
-            <td>Email</td>
-            <td> : </td>
-            <td>
-                <center>
-                    <input type="email" name="email" value="{{ $edits[0]->email_pengguna }}">
-                </center>    
-            </td>
-        </tr>
-        <tr>
-            <td>Nomor</td>
-            <td> : </td>
-            <td>
-                <center>
-                    <input type="text" name="nomor" value="{{ $edits[0]->nomor_pengguna }}">
-                </center>    
-            </td>
-        </tr>
-        <tr>
-            <td>Alamat</td>
-            <td> : </td>
-            <td>
-                <center>
-                    <input type="text" name="alamat" value="{{ $edits[0]->alamat_pengguna }}">
-                </center>    
-            </td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td> : </td>
-            <td>
-                <center>
-                    <input type="password" name="password" value="">
-                </center>    
-            </td>
-        </tr>
-         <tr>
-             <td>Level</td>
-             <td> : </td>
-             <td>
-                 <center>
-                     {{-- DATA LIST INPUT CATEGORY --}}
-                     <select name="peran">
-                         @foreach ($roles as $opt)
-                             <option value="{{ $opt->id }}">{{ $opt->jenis_peran }}</option> 
-                         @endforeach
-                     </select>   
-                 </center>
-             </td>
-
-             {{-- AUTO GENERATE --}}
-             <input type="hidden" name="slug" value="@php $tabuid = uniqid('gfg', true); echo $tabuid; @endphp">
-         </tr>
-
-         <tr>
-             <td colspan="2">
-                 <center>
-                     <button type="submit">Submit</button>
-                 </center>
-             </td>
-
-         </tr>
-
-         
-     </form>
-
-     @php error_reporting(E_ALL); @endphp
-
- </table>
+@endif
 
 @endsection
+
 
 

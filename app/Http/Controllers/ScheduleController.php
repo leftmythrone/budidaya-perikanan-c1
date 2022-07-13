@@ -46,7 +46,30 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        $schedules = DB::table('schedules')
+        ->join('schedule_categories', 'schedule_categories.id', '=', 'schedule_category_id')
+        ->select('schedules.*', 'schedule_categories.jenis_jadwal')
+        ->orderBy('schedules.created_at','DESC')
+        ->get();
+
+        return view('/pages/company/jadwal/jadwal', [
+            // Judul Page
+            "title" => "Penjadwalan",
+
+            // Pemanggil
+            "schedules" => $schedules,  
+            "schecats" => ScheduleCategory::latest('id')->get(),  
+            
+            "stocks" => Stock::latest('id')->get(),  
+            "number" => 1,
+
+            // Looping variable
+            "number" => 1,
+            "start" => 0,
+
+            // Looping variable
+            "end" => 0
+        ]);
     }
 
     /**

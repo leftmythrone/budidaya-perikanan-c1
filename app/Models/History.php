@@ -9,6 +9,11 @@ class History extends Model
 {
     use HasFactory;
 
+    public function users()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'history_user_id');
+    }
+
     // GUARDING IMPORTANT
     protected $guarded = ['id'];
 }

@@ -1,212 +1,157 @@
 @extends('layouts.main')
 
 @section('gate')
-<br><br>
+
+
+
+{{-- OVERLAY --}}
+<div id="overlay" onclick="off()"></div>
+<br><br><br><br>
+
 {{-- START VARIABLE --}}
-@php  @endphp
+<link rel="stylesheet" href="/css/pages/company/table.css">
 
-<br>
 <div class="headsection">
-    <br>
-    <h1>Pages {{ $title }}</h1>
-        <form action="" method="get">
-            <input type="text" name="searchfish" placeholder="Search..">
-        </form>
+ 
+    {{-- HEADING --}}
+    <h1>Pages Data Pemasukan</h1>
 
-    <button type="button">Add new Ikan + </button>
+    {{-- SUMMARY --}}
+    <h4>Pada page ini berisi seluruh pencatatan <br> pemasukan pada PT. Sukaiwaks</h4>
 
-    <h2>Pages ini berisi seluruh data ikan yang harus <br>
-    di kelola oleh karyawan ataupun owner
-    </h2>
+<br><hr>
 
-    {{-- JARAK --}}
-    <br><br>
 </div>
-
-<div class="line">
+<div class="addbtn">
+    <a href="/pengguna/create"><button type="button">Add new Ikan +</button></a>
 </div>
 <br>
 
-<h1>Income</h1>
+<div class="tables">
         <table width="100%">
         <tr>
             {{-- TABLE HEADER --}}
             <th><center>No</center></th> 
-            <th><center>Deskripsi pemasukan</center></th>
-            <th><center>Tanggal pemasukan</center></th>
-            <th><center>Nominal pemasukan</center></th>
-
+            <th><center>Income Description</center></th>
+            <th><center>Entry Date</center></th>
+            <th><center>Nominal</center></th>
             <th><center>Action</center></th>
         </tr>
-        
-        @for ( $start = 0 + $end; $start < 10 + $end ; $start++ )
         <tr>
+            <td colspan="99"><hr></td>
+        </tr>
+        
+        @for ( $start = 0 ; $start < 10 ; $start++ )
+            
             @php error_reporting(0); @endphp
 
-                <td><center>{{ $number++ }}</center></td>
-                <td><center>{{ $incomes[$start]->deskripsi_pemasukan }}</center></td>
-                <td><center>{{ $incomes[$start]->tanggal_pemasukan }}</center></td>
-                <td><center>Rp. {{ number_format( $incomes[$start]->nominal_pemasukan , 0, " ,",".") }},00</center></td>
-                <td>
-                    <center>
-                        <a href="/penjualan/income/destroy/{{ $incomes[$start]->slug_pemasukan }}">Hapus</a></a>
-                        <a href="/penjualan/income/edit/{{ $incomes[$start]->slug_pemasukan }}">Edit</a>
-                    </center>
-                </td>
-                @php error_reporting(E_ALL); @endphp
+                @if ( $incomes[$start]->id === null )
 
+                @else
+                
+                <tr>
+
+                    <td><center>{{ $number++ }}</center></td>
+                    <td><center>{{ $incomes[$start]->deskripsi_pemasukan }}</center></td>
+                    <td><center>{{ $incomes[$start]->tanggal_pemasukan }}</center></td>
+                    <td><center>{{ $incomes[$start]->nominal_pemasukan }} L</center></td>
+                    <td>
+                        <center>
+                            <a href="/pengguna/edit/{{ $incomes[$start]->slug_pengguna }}"><button><img src="/img/pencil_white.png" alt=""></button></a> 
+                            <a href="/pengguna/destroy/{{ $incomes[$start]->slug_pengguna }}"><button><img src="/img/trash_white.png" alt=""></button></a> 
+                        </center>
+                    </td>
+                
+                </tr>
+
+            @php error_reporting(E_ALL); @endphp
+
+        <tr>
+            <td colspan="99">
+                <hr>
+            </td>
         </tr>
+        @endif
+
         @endfor
     </table>
-
-    @php $number = 1; @endphp
-
+    </div>
 
 
-    <h1>Expense</h1>
-        <table width="100%">
-        <tr>
-            {{-- TABLE HEADER --}}
-            <th><center>No</center></th> 
-            <th><center>Deskripsi Pengeluaran</center></th>
-            <th><center>Tanggal Pengeluaran</center></th>
-            <th><center>Nominal Pengeluaran</center></th>
+    
 
-            <th><center>Action</center></th>
-        </tr>
-        
-        @for ( $start = 0 + $end; $start < 10 + $end ; $start++ )
-        <tr>
-            @php error_reporting(0); @endphp
+<br><br><br> @php $number = 1; @endphp
 
-                <td><center>{{ $number + $start }}</center></td>
-                <td><center>{{ $expenses[$start]->deskripsi_pengeluaran }}</center></td>
-                <td><center>{{ $expenses[$start]->tanggal_pengeluaran }}</center></td>
-                <td><center>Rp. {{ number_format( $expenses[$start]->nominal_pengeluaran , 0, " ,",".") }},00</center></td>
-                <td>
-                    <center>
-                        <a href="/penjualan/expense/destroy/{{ $expenses[$start]->slug_pengeluaran }}">Hapus</a></a>
-                        <a href="/penjualan/expense/edit/{{ $expenses[$start]->slug_pengeluaran }}">Edit</a>
-                    </center>
-                </td>
+
+
+
+
+    <div class="headsection">
+ 
+        {{-- HEADING --}}
+        <h1>Pages Data Pengeluaran</h1>
+    
+    
+        {{-- SUMMARY --}}
+        <h4>Pada page ini berisi seluruh pencatatan <br> pengeluaran pada PT. Sukaiwaks</h4>
+    
+    <br><hr>
+    
+    </div>
+    <div class="addbtn">
+        <a href="/pengguna/create"><button type="button">Add new Ikan +</button></a>
+    </div>
+    <br>
+    
+    <div class="tables">
+            <table width="100%">
+            <tr>
+                {{-- TABLE HEADER --}}
+                <th><center>No</center></th> 
+                <th><center>Expense Description</center></th>
+                <th><center>Entry Date</center></th>
+                <th><center>Nominal</center></th>
+                <th><center>Action</center></th>>
+            </tr>
+            <tr>
+                <td colspan="99"><hr></td>
+            </tr>
+            
+            @for ( $start = 0 ; $start < 10 ; $start++ )
+                
+                @php error_reporting(0); @endphp
+    
+                    @if ( $expenses[$start]->id === null )
+    
+                    @else
+                    
+                    <tr>
+    
+                        <td><center>{{ $number++ }}</center></td>
+                        <td><center>{{ $expenses[$start]->deskripsi_pengeluaran }}</center></td>
+                        <td><center>{{ $expenses[$start]->tanggal_pengeluaran }}</center></td>
+                        <td><center>{{ $expenses[$start]->nominal_pengeluaran }} L</center></td>
+                        <td>
+                            <center>
+                                <a href="/pengguna/edit/{{ $expenses[$start]->slug_pengguna }}"><button><img src="/img/pencil_white.png" alt=""></button></a> 
+                                <a href="/pengguna/destroy/{{ $expenses[$start]->slug_pengguna }}"><button><img src="/img/trash_white.png" alt=""></button></a> 
+                            </center>
+                        </td>
+                    
+                    </tr>
+    
                 @php error_reporting(E_ALL); @endphp
-
-        </tr>
-        @endfor
-    </table>
-
-
-
-    <br><br>
-    <h1>Income Create New</h1>
-    <table>
-            
-        
-        <form action="/penjualan/income/store" method="post">
-            @csrf
-            <br>
+    
             <tr>
-                <td>Deskripsi Pemasukan</td>
-                <td> : </td>
-                <td>
-                    <center>
-                        <input type="text" name="deskripsi" value="">
-                    </center>
+                <td colspan="99">
+                    <hr>
                 </td>
             </tr>
-            <tr>
-                <td>Tanggal_pemasukan</td>
-                <td> : </td>
-                <td>
-                    <center>
-                        <input type="date" name="tanggal" value="">
-                    </center>    
-                </td>
-            </tr>
-            <tr>
-               <td>Nominal</td>
-               <td> : </td>
-               <td>
-                   <center>
-                       <input type="number" name="nominal" value="">
-                       <input type="hidden" name="slug" value="@php $tabuid = uniqid('gfg', true); echo $tabuid; @endphp">
-                    </center>    
-               </td>
-           </tr>
-           </tr>
-
-            <tr>
-                <td colspan="2">
-                    <center>
-                        <button type="submit">Submit</button>
-                    </center>
-                </td>
-   
-            </tr>
-   
-            
-        </form>
-    </table>
-   
-   
-   
-   
-   
-   
-    <br><br>
-    <h1>Income Create New</h1>
-    <table>
-   
-       @php error_reporting(0); @endphp
-   
-   
-        <form action="/penjualan/income/update/{{ $inedits[0]->slug_pemasukan }}" method="post">
-            @csrf
-            <br>
-            <tr>
-                <td>Deskripsi Pemasukan</td>
-                <td> : </td>
-                <td>
-                    <center>
-                        <input type="text" name="deskripsi" value="{{ $inedits[0]->deskripsi_pemasukan }}">
-                    </center>
-                </td>
-            </tr>
-            <tr>
-                <td>Tanggal_pemasukan</td>
-                <td> : </td>
-                <td>
-                    <center>
-                        <input type="date" name="tanggal" value="{{ $inedits[0]->tanggal_pemasukan }}">
-                    </center>    
-                </td>
-            </tr>
-            <tr>
-               <td>Nominal</td>
-               <td> : </td>
-               <td>
-                   <center>
-                       <input type="number" name="nominal" value="{{ $inedits[0]->nominal_pemasukan }}">
-                       <input type="hidden" name="slug" value="@php $tabuid = uniqid('gfg', true); echo $tabuid; @endphp">
-                    </center>    
-               </td>
-           </tr>
-   
-            <tr>
-                <td colspan="2">
-                    <center>
-                        <button type="submit">Submit</button>
-                    </center>
-                </td>
-   
-            </tr>
-   
-            
-        </form>
-   
-        @php error_reporting(E_ALL); @endphp
-   
-    </table>
+            @endif
+    
+            @endfor
+        </table>
+        </div>
 
 
 
@@ -220,117 +165,53 @@
 
 
 
-    <br><br>
-    <h1>Expense Create New</h1>
-    <table>
-            
-        
-        <form action="/penjualan/expense/store" method="post">
-            @csrf
-            <br>
-            <tr>
-                <td>Deskripsi Pengeluaran</td>
-                <td> : </td>
-                <td>
-                    <center>
-                        <input type="text" name="deskripsi" value="">
-                    </center>
-                </td>
-            </tr>
-            <tr>
-                <td>Tanggal_pemasukan</td>
-                <td> : </td>
-                <td>
-                    <center>
-                        <input type="date" name="tanggal" value="">
-                    </center>    
-                </td>
-            </tr>
-            <tr>
-               <td>Nominal</td>
-               <td> : </td>
-               <td>
-                   <center>
-                       <input type="number" name="nominal" value="">
-                       <input type="hidden" name="slug" value="@php $tabuid = uniqid('gfg', true); echo $tabuid; @endphp">
-                    </center>    
-               </td>
-           </tr>
-           </tr>
 
-            <tr>
-                <td colspan="2">
-                    <center>
-                        <button type="submit">Submit</button>
-                    </center>
-                </td>
-   
-            </tr>
-   
-            
-        </form>
-    </table>
-   
-   
-   
-   
-   
-   
-    <br><br>
-    <h1>Expense Create New</h1>
-    <table>
-   
-       @php error_reporting(0); @endphp
-   
-   
-        <form action="/penjualan/expense/update/{{ $exedits[0]->slug_pengeluaran }}" method="post">
-            @csrf
-            <br>
-            <tr>
-                <td>Deskripsi Pengeluaran</td>
-                <td> : </td>
-                <td>
-                    <center>
-                        <input type="text" name="deskripsi" value="{{ $exedits[0]->deskripsi_pengeluaran }}">
-                    </center>
-                </td>
-            </tr>
-            <tr>
-                <td>Tanggal_pemasukan</td>
-                <td> : </td>
-                <td>
-                    <center>
-                        <input type="date" name="tanggal" value="{{ $exedits[0]->tanggal_pengeluaran }}">
-                    </center>    
-                </td>
-            </tr>
-            <tr>
-               <td>Nominal</td>
-               <td> : </td>
-               <td>
-                   <center>
-                       <input type="number" name="nominal" value="{{ $exedits[0]->nominal_pengeluaran }}">
-                       <input type="hidden" name="slug" value="@php $tabuid = uniqid('gfg', true); echo $tabuid; @endphp">
-                    </center>    
-               </td>
-           </tr>
-   
-            <tr>
-                <td colspan="2">
-                    <center>
-                        <button type="submit">Submit</button>
-                    </center>
-                </td>
-   
-            </tr>
-   
-            
-        </form>
-   
-        @php error_reporting(E_ALL); @endphp
-   
-    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@include('pages.company.penjualan.crud')
+
+{{-- SCRIPT --}}
+@if ( $js == 1 )
+
+{{-- SCRIPT EDIT CATEGORY --}}
+<script>    
+    const categoryPop = document.getElementById('addnew');
+    const categoryOverlay = document.getElementById('overlay');
+
+    categoryPop.style.display = "block";
+    categoryPop.display = "none";
+    categoryOverlay.style.display = "block" 
+</script>
+
+{{-- SCRIPT VIEW CATEGORY --}}
+@elseif ( $js == 2 )
+<script>    
+    const categoryPop = document.getElementById('edit');
+    const categoryOverlay = document.getElementById('overlay');
+
+    categoryPop.style.display = "block";
+    categoryPop.display = "none";
+    categoryOverlay.style.display = "block"
+</script>   
+
+@endif
 
 @endsection
+
 
 

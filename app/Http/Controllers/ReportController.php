@@ -21,7 +21,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('/pages/company/laporan/laporan', [
+        return view('/pages/company/stok/stok', [
             // Judul Page
             "title" => "Laporan",
         ]);

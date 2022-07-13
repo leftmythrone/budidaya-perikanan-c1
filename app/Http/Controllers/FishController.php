@@ -33,7 +33,10 @@ class FishController extends Controller
 
             // Looping variable
             "start" => 0,
-            "end" => 10
+            "end" => 10,
+
+            // JavaScript
+            "js" => 0
         ]);
     }
 
@@ -57,7 +60,10 @@ class FishController extends Controller
 
             // Looping variable
             "start" => 0,
-            "end" => 10
+            "end" => 10,
+
+            // JavaScript
+            "js" => 1
         ]);
     }
 
@@ -87,6 +93,9 @@ class FishController extends Controller
 
             // Data harga ikan
             'harga_ikan' => $request->price,
+
+            // Data harga ikan
+            'tanggal_ikan' => $request->tanggal,
 
             // Data search ikan
             'slug_ikan' => $request->slug    
@@ -135,7 +144,10 @@ class FishController extends Controller
 
             // Looping variable
             "start" => 0,
-            "end" => 10
+            "end" => 10,
+
+            // JavaScript
+            "js" => 2
         ]);
     }
 
